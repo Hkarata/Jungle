@@ -1,6 +1,31 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<div id="Container" class="seasalt-background">
+
+    <header>
+        
+        <span class="rojo" style="font-size:24px;letter-spacing:1px;font-weight:900">Jungle</span>
+
+    </header>
+
+    <main>
+        @Body
+    </main>
+
+    <footer>
+        
+        <span>&copy; @DateTime.Today.Year Jungle Ecommerce. All rights reserved</span>
+
+        <div>
+
+            <a>Terms of Service</a>
+
+            <a>Privacy Policy</a>
+
+        </div>
+
+    </footer>
+</div>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.

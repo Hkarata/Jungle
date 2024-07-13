@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Jungle.Api.Data;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Jungle.Api.Entities
 {
     [Table("Customers", Schema = "Sales")]
-    public class Customer
+    public class Customer : ISoftDelete
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
@@ -13,5 +14,9 @@ namespace Jungle.Api.Entities
 
         // Navigation properties
         public List<Order>? Orders { get; set; }
+
+        // Soft delete properties
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOnUtc { get; set; }
     }
 }

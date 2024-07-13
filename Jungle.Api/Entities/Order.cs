@@ -1,17 +1,32 @@
-﻿namespace Jungle.Api.Entities
+﻿using Jungle.Api.Data;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Jungle.Api.Entities
 {
     [Table("Orders", Schema = "Sales")]
-    public class Order
+    public class Order : ISoftDelete
     {
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal Total { get; set; }
-        public string Status { get; set; } = string.Empty;
+        public OrderStatus Status { get; set; }
 
         // Navigation properties
         public int CustomerId { get; set; }
         public Customer? Customer { get; set; }
 
         public List<OrderItem>? OrderItems { get; set; }
+
+        // Soft delete properties
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedOnUtc { get; set; }
+    }
+
+    public enum OrderStatus
+    {
+        Pending,
+        Processing,
+        Completed,
+        Cancelled
     }
 }

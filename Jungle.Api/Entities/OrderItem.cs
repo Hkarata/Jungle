@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Jungle.Api.Entities
 {
     [Table("OrderItems", Schema = "Sales")]
-    public class OrderItem : ISoftDelete
+    public class OrderItem : ISoftDelete, IAudit
     {
         public int Id { get; set; }
         public string ProductName { get; set; } = string.Empty;
@@ -15,6 +15,10 @@ namespace Jungle.Api.Entities
         // soft delete properties
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOnUtc { get; set; }
+
+        // audit properties
+        public DateTime CreatedOnUtc { get; set; }
+        public DateTime? UpdatedOnUtc { get; set; }
     }
 
     public static class OrderItemExtensions

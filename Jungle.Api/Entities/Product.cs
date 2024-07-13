@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Jungle.Api.Entities
 {
     [Table("Products", Schema = "Stock")]
-    public class Product : ISoftDelete
+    public class Product : ISoftDelete, IAudit
     {
         public int Id { get; set; }
 
@@ -18,14 +18,16 @@ namespace Jungle.Api.Entities
         public decimal Price { get; set; }
 
         // Navigation properties
-        public int CategoryId { get; set; }
-        public Category? Category { get; set; }
-
         public Guid TenantId { get; set; }
         public Tenant? Tenant { get; set; }
+        public List<Category>? Categories { get; set; }
 
         // Soft delete properties
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOnUtc { get; set; }
+
+        // Audit properties
+        public DateTime CreatedOnUtc { get; set; }
+        public DateTime? UpdatedOnUtc { get; set; }
     }
 }

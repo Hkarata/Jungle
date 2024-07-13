@@ -1,5 +1,8 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.Jungle>("Jungle-web");
+var apiService = builder.AddProject<Projects.Jungle_Api>("Jungle-api");
+
+builder.AddProject<Projects.Jungle>("Jungle-web")
+    .WithReference(apiService);
 
 builder.Build().Run();

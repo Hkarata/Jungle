@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Jungle.Api\Jungle.Api.csproj" />
     <ProjectReference Include="..\Jungle\Jungle\Jungle.csproj" />
   </ItemGroup>
 

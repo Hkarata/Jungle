@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35103.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jungle", "Jungle\Jungle\Jungle.csproj", "{F42A69E2-0328-4F37-B93B-0546196B2B16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle", "Jungle\Jungle\Jungle.csproj", "{F42A69E2-0328-4F37-B93B-0546196B2B16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jungle.Client", "Jungle\Jungle.Client\Jungle.Client.csproj", "{690F1B4B-738E-4DA7-8E29-CABFFB5DE789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.Client", "Jungle\Jungle.Client\Jungle.Client.csproj", "{690F1B4B-738E-4DA7-8E29-CABFFB5DE789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jungle.AppHost", "Jungle.AppHost\Jungle.AppHost.csproj", "{D018D83C-E900-43F5-A5B1-73E8BD8C068A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.ServiceDefaults", "Jungle.ServiceDefaults\Jungle.ServiceDefaults.csproj", "{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{690F1B4B-738E-4DA7-8E29-CABFFB5DE789}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{690F1B4B-738E-4DA7-8E29-CABFFB5DE789}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{690F1B4B-738E-4DA7-8E29-CABFFB5DE789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D018D83C-E900-43F5-A5B1-73E8BD8C068A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D018D83C-E900-43F5-A5B1-73E8BD8C068A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D018D83C-E900-43F5-A5B1-73E8BD8C068A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D018D83C-E900-43F5-A5B1-73E8BD8C068A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

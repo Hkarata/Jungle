@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle", "Jungle\Jungle\Jun
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.Client", "Jungle\Jungle.Client\Jungle.Client.csproj", "{690F1B4B-738E-4DA7-8E29-CABFFB5DE789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jungle.AppHost", "Jungle.AppHost\Jungle.AppHost.csproj", "{D018D83C-E900-43F5-A5B1-73E8BD8C068A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.AppHost", "Jungle.AppHost\Jungle.AppHost.csproj", "{D018D83C-E900-43F5-A5B1-73E8BD8C068A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.ServiceDefaults", "Jungle.ServiceDefaults\Jungle.ServiceDefaults.csproj", "{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jungle.Api", "Jungle.Api\Jungle.Api.csproj", "{1E6ABBDE-580E-4E41-9B34-C94375952EBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0DB091D-AD7B-4C43-8B75-2DFF38EF7AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E6ABBDE-580E-4E41-9B34-C94375952EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E6ABBDE-580E-4E41-9B34-C94375952EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E6ABBDE-580E-4E41-9B34-C94375952EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E6ABBDE-580E-4E41-9B34-C94375952EBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

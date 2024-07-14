@@ -9,10 +9,10 @@ namespace Jungle.Api.Events
         public abstract Guid StreamId { get; }
         public DateTime CreatedAtUtc { get; set; }
 
-        [JsonPropertyName("PrimaryKey")]
-        public string PrimaryKey => StreamId.ToString();
+        [JsonPropertyName("PartitionKey")]
+        public string PartitionKey => StreamId.ToString();
 
-        [JsonPropertyName("StreamKey")]
-        public string StreamKey => CreatedAtUtc.ToString("O");
+        [JsonPropertyName("SortKey")]
+        public string SortKey => CreatedAtUtc.ToString("O");
     }
 }

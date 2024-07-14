@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Carter" Version="8.2.1" />
+    <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
       <PrivateAssets>all</PrivateAssets>
@@ -29,10 +30,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Jungle.ServiceDefaults\Jungle.ServiceDefaults.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Category\" />
   </ItemGroup>
 
 </Project>

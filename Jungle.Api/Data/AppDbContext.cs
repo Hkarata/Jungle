@@ -30,7 +30,7 @@ namespace Jungle.Api.Data
                 .Property(p => p.Price)
                 .HasColumnType("decimal(18,2)");
 
-            base.OnModelCreating(modelBuilder); 
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -6,6 +6,8 @@ internal abstract class CreateCategory
 {
     internal class Command : IRequest
     {
-        public string Name { get; set; }
+        public required string Name { get; set; }
     }
+
+    internal sealed class
 }

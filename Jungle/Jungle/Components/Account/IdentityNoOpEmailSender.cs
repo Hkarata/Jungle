@@ -1,6 +1,6 @@
 ﻿using Jungle.Data;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Jungle.Components.Account
 {

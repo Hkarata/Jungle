@@ -7,5 +7,9 @@
         public static readonly Error NullValue = new("Error.NullValue", "The specified result value is null.");
 
         public static readonly Error ConditionNotMet = new("Error.ConditionNotMet", "The specified condition was not met.");
+
+        public static readonly Error ExistentCategory = new("Error.ExistentCategory", "The specified category already exists");
+
+        public static readonly Error NonExistentCategory = new("Error.NonExistentCategory", "The specified category does not exist");
     }
 }

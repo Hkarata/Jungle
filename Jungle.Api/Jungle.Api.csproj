@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Jungle.ServiceDefaults\Jungle.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Jungle.Shared\Jungle.Shared.csproj" />
   </ItemGroup>
 
 </Project>

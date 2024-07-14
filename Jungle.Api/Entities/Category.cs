@@ -7,7 +7,7 @@ namespace Jungle.Api.Entities
     [Table("Categories", Schema = "Stock")]
     public class Category : ISoftDelete, IAudit
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [MaxLength(50)]
         public string Name { get; set; } = string.Empty;

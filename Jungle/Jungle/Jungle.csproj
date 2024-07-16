@@ -32,4 +32,8 @@
     <ProjectReference Include="..\Jungle.Client\Jungle.Client.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
 </Project>

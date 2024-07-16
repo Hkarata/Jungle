@@ -10,6 +10,7 @@ header {
     height: 8%;
     background-color: #FFFFFF;
     display: flex;
+    justify-content:space-between;
     flex-direction: row;
     align-items: center;
     padding-left: 15px;
@@ -21,13 +22,12 @@ header {
 #Links {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
     justify-self:center;
 }
 
 #Cart{
     width: 30px;
-    margin-left:auto;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
@@ -38,8 +38,9 @@ header {
 
 
 main {
-    height: 84%;
-    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
 footer {
@@ -73,7 +74,9 @@ footer div a:hover {
 }
 
 @media (max-width: 768px) {
-
+    main {
+        padding: 5px;
+    }
     footer {
         flex-direction: column;
         align-items: flex-start;

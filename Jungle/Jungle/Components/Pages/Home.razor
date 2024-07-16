@@ -1,11 +1,14 @@
 ﻿@page "/"
 
+@inject IJSRuntime jsRuntime
+
+
 <PageTitle>Home</PageTitle>
 
 <div id="First" class="licorice-background">
     
     <div id="left">
-        <span class="Rubik-Medium" style="color:white;font-size: 40px; font-weight: 600">
+        <span class="Rubik-Medium" style="color:white;font-size: 35px; font-weight: 600">
             Get Up to 30% off
         </span>
 
@@ -24,7 +27,9 @@
     </div>
 
     <div id="right">
-        sss
+        <img id="slideshow" src="/Images/shoes.png" />
     </div>
 
 </div>
+
+<script src="/js/image-slideshow.js"></script>

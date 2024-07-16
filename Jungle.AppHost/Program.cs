@@ -1,13 +1,18 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var dynamoDb = builder.AddContainer("DynamoDb", "amazon/dynamodb-local")
-    .WithHttpEndpoint(8000, 8002)
-    .WithHttpsEndpoint(8001, 8003)
+var dynamoDb = builder.AddContainer("Jungle-DynamoDb", "amazon/dynamodb-local")
+    .WithEndpoint(8000, 8000)
     .WithOtlpExporter();
 
-var apiService = builder.AddProject<Projects.Jungle_Api>("Jungle-api");
+var seq = builder.AddSeq("seq")
+    .WithEnvironment("ACCEPT_EULA", "Y")
+    .ExcludeFromManifest();
+
+var apiService = builder.AddProject<Projects.Jungle_Api>("Jungle-api")
+    .WithReference(seq);
 
 builder.AddProject<Projects.Jungle>("Jungle-web")
-    .WithReference(apiService);
+    .WithReference(apiService)
+    .WithReference(seq);
 
 builder.Build().Run();

@@ -1,6 +1,8 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 var dynamoDb = builder.AddContainer("Jungle-DynamoDb", "amazon/dynamodb-local")
+    .WithEntrypoint("java")
+    .WithArgs("-jar", "DynamoDBLocal.jar", "-inMemory", "-sharedDb")
     .WithEndpoint(8000, 8000)
     .WithOtlpExporter();
 

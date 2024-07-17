@@ -1,8 +1,10 @@
 ﻿using Carter;
 using Jungle.Api.Data;
+using Jungle.Api.Events;
 using Jungle.Shared.Extensions;
 using Jungle.Shared.Requests;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Jungle.Api.Features.Category;
 
@@ -13,12 +15,12 @@ internal abstract class CreateCategory
         public required string Name { get; set; }
     }
 
-    internal sealed class Handler(AppDbContext context) : IRequestHandler<Command, Result<Guid>>
+    internal sealed class Handler(AppDbContext context, EventDatabase eventDatabase) : IRequestHandler<Command, Result<Guid>>
     {
         public async Task<Result<Guid>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var categoryExist = context.Categories
-                .Any(x => x.Name.Equals(request.Name, StringComparison.OrdinalIgnoreCase));
+            var categoryExist = await context.Categories
+                 .AnyAsync(c => c.Name.ToLower() == request.Name.ToLower());
 
             if (categoryExist)
             {
@@ -36,6 +38,12 @@ internal abstract class CreateCategory
             await context.Categories.AddAsync(category);
 
             await context.SaveChangesAsync(cancellationToken);
+
+            await eventDatabase.AppendAsync(new CategoryCreated
+            {
+                CategoryId = category.Id,
+                Name = category.Name
+            }, "CategoryEvents");
 
             return category.Id;
         }

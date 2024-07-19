@@ -7,13 +7,15 @@ namespace Jungle.Api.Entities
     [Table("Products", Schema = "Stock")]
     public class Product : ISoftDelete, IAudit
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
 
         [MaxLength(100)]
         public string Description { get; set; } = string.Empty;
+
+        public string Images { get; set; } = string.Empty;
         public int Quantity { get; set; }
         public decimal Price { get; set; }
 

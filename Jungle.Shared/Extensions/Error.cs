@@ -11,5 +11,6 @@
         public static readonly Error ExistentCategory = new("Error.ExistentCategory", "The specified category already exists");
 
         public static readonly Error NoneExistentCategory = new("Error.NoneExistentCategory", "The specified category does not exist");
+        public static readonly Error NoneExistentProduct = new("Error.NoneExistentProduct", "The specified product does not exist");
     }
 }

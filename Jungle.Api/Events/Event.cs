@@ -1,4 +1,5 @@
 ﻿using Jungle.Api.Events.CategoryEvents;
+using Jungle.Api.Events.ProductEvents;
 using System.Text.Json.Serialization;
 
 namespace Jungle.Api.Events
@@ -7,6 +8,7 @@ namespace Jungle.Api.Events
     [JsonDerivedType(typeof(CategoryCreated), nameof(CategoryCreated))]
     [JsonDerivedType(typeof(CategoryUpdated), nameof(CategoryUpdated))]
     [JsonDerivedType(typeof(CategoryDeleted), nameof(CategoryDeleted))]
+    [JsonDerivedType(typeof(ProductCreated), nameof(ProductCreated))]
     public abstract class Event
     {
         public abstract Guid StreamId { get; }

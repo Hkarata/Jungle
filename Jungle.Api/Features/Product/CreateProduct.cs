@@ -1,11 +1,11 @@
-﻿using System.Text.Json;
-using Carter;
+﻿using Carter;
 using Jungle.Api.Data;
 using Jungle.Api.Events.ProductEvents;
 using Jungle.Shared.Extensions;
 using Jungle.Shared.Requests;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace Jungle.Api.Features.Product;
 
@@ -21,12 +21,12 @@ internal abstract class CreateProduct
         public Guid TenantId { get; init; }
         public List<Guid>? Categories { get; init; }
     }
-    
+
     internal sealed class Handler(AppDbContext context, EventDatabase eventDatabase) : IRequestHandler<Command, Result<Guid>>
     {
         public async Task<Result<Guid>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var categories = await  context.Categories
+            var categories = await context.Categories
                 .Where(x => request.Categories!.Contains(x.Id))
                 .ToListAsync(cancellationToken);
 
@@ -59,9 +59,9 @@ internal abstract class CreateProduct
                 Images = product.Images,
                 ProductCategories = product.Categories.Select(c => c.Name).ToList()
             }, "ProductEvents");
-            
+
             await context.Products.AddAsync(product, cancellationToken);
-            
+
             await context.SaveChangesAsync(cancellationToken);
 
             return product.Id;

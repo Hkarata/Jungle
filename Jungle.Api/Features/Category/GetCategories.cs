@@ -17,6 +17,7 @@ namespace Jungle.Api.Features.Category
             public async Task<Result<IEnumerable<CategoryDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var categories = await context.Categories
+                    .AsNoTracking()
                     .Where(c => !c.IsDeleted)
                     .Select(c => new CategoryDto
                     {

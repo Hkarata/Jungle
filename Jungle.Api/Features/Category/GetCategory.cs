@@ -20,6 +20,7 @@ namespace Jungle.Api.Features.Category
             public async Task<Result<CategoryDto>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var category = await context.Categories
+                    .AsNoTracking()
                     .Where(c => c.Id == request.Id)
                     .Include(c => c.Products!)
                     .ThenInclude(c => c.Tenant)

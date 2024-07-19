@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jungle.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240719021739_CategoryProductCountMigration")]
-    partial class CategoryProductCountMigration
+    [Migration("20240719205628_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,8 +30,8 @@ namespace Jungle.Api.Migrations
                     b.Property<Guid>("CategoriesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProductsId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CategoriesId", "ProductsId");
 
@@ -198,11 +198,9 @@ namespace Jungle.Api.Migrations
 
             modelBuilder.Entity("Jungle.Api.Entities.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedOnUtc")
                         .HasColumnType("datetime2");
@@ -214,6 +212,10 @@ namespace Jungle.Api.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Images")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

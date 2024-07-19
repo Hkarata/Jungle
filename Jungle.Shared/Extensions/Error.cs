@@ -10,6 +10,6 @@
 
         public static readonly Error ExistentCategory = new("Error.ExistentCategory", "The specified category already exists");
 
-        public static readonly Error NonExistentCategory = new("Error.NonExistentCategory", "The specified category does not exist");
+        public static readonly Error NoneExistentCategory = new("Error.NoneExistentCategory", "The specified category does not exist");
     }
 }

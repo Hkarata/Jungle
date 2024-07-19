@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Carter.OpenApi;
 using Jungle.Api.Data;
 using Jungle.Api.Events;
 using Jungle.Shared.Extensions;
@@ -64,7 +65,10 @@ public class CreateCategoryEndPoint : ICarterModule
                 return Results.Conflict(result.Error);
             }
 
-            return Results.CreatedAtRoute($"/api/category/{result.Value}");
-        });
+            return Results.Ok(result);
+        })
+            .WithTags("Category")
+            .Produces<Result<Guid>>()
+            .IncludeInOpenApi();
     }
 }

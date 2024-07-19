@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Carter.OpenApi;
 using Jungle.Api.Data;
 using Jungle.Shared.Extensions;
 using Jungle.Shared.Responses;
@@ -42,7 +43,7 @@ namespace Jungle.Api.Features.Category
 
                 if (category is null)
                 {
-                    return Result.Failure<CategoryDto>(Error.NonExistentCategory);
+                    return Result.Failure<CategoryDto>(Error.NoneExistentCategory);
                 }
 
                 return category;
@@ -61,11 +62,14 @@ namespace Jungle.Api.Features.Category
 
                 if (result.IsFailure)
                 {
-                    return Results.NoContent();
+                    return Results.BadRequest(result.Error);
                 }
 
                 return Results.Ok(result);
-            });
+            })
+                .WithTags("Category")
+                .Produces<Result<CategoryDto>>()
+                .IncludeInOpenApi();
         }
     }
 }

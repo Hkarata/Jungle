@@ -4,6 +4,7 @@ namespace Jungle.Api.Events
 {
     [JsonPolymorphic]
     [JsonDerivedType(typeof(CategoryCreated), nameof(CategoryCreated))]
+    [JsonDerivedType(typeof(CategoryUpdated), nameof(CategoryUpdated))]
     public abstract class Event
     {
         public abstract Guid StreamId { get; }

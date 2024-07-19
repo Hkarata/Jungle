@@ -2,6 +2,7 @@
 using Carter.OpenApi;
 using Jungle.Api.Data;
 using Jungle.Api.Events;
+using Jungle.Api.Events.CategoryEvents;
 using Jungle.Shared.Extensions;
 using Jungle.Shared.Requests;
 using MediatR;
@@ -32,6 +33,7 @@ internal abstract class CreateCategory
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,
+                ProductsCount = 0,
                 IsDeleted = false,
                 CreatedOnUtc = DateTime.UtcNow
             };

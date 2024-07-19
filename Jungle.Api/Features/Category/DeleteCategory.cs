@@ -4,54 +4,56 @@ using Jungle.Api.Data;
 using Jungle.Api.Events;
 using Jungle.Api.Events.CategoryEvents;
 using Jungle.Shared.Extensions;
-using Jungle.Shared.Requests;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jungle.Api.Features.Category
 {
-    internal abstract class EditCategory
+    internal abstract class DeleteCategory
     {
-        internal class Command : IRequest<Result<Guid>>
+        internal class Command : IRequest<Result>
         {
             public Guid Id { get; set; }
-            public string Name { get; set; } = string.Empty;
         }
 
-        internal sealed class Handler(AppDbContext context, EventDatabase eventDatabase) : IRequestHandler<Command, Result<Guid>>
+        internal sealed class Handler(AppDbContext context, EventDatabase eventDatabase) : IRequestHandler<Command, Result>
         {
-            public async Task<Result<Guid>> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result> Handle(Command request, CancellationToken cancellationToken)
             {
                 var category = await context.Categories
                     .FirstOrDefaultAsync(c => c.Id == request.Id);
 
                 if (category is null)
                 {
-                    return Result.Failure<Guid>(Error.NoneExistentCategory);
+                    return Result.Failure(Error.NoneExistentCategory);
                 }
 
-                category.Name = request.Name;
+                category.IsDeleted = true;
+                category.DeletedOnUtc = DateTime.UtcNow;
 
                 await context.SaveChangesAsync(cancellationToken);
 
-                await eventDatabase.AppendAsync(new CategoryUpdated
+                await eventDatabase.AppendAsync(new CategoryDeleted
                 {
                     CategoryId = category.Id,
                     Name = category.Name
                 }, "CategoryEvents");
 
-                return category.Id;
+                return Result.Success();
             }
         }
     }
 
-    public class EditCategoryEndPoint : ICarterModule
+    public class DeleteCategoryEndPoint : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPut("/api/category/{id:guid}", async (Guid id, EditCategoryDto category, ISender sender) =>
+            app.MapDelete("/api/category/{id}", async (Guid id, ISender sender) =>
             {
-                var request = new EditCategory.Command { Id = id, Name = category.Name };
+                var request = new DeleteCategory.Command
+                {
+                    Id = id
+                };
 
                 var result = await sender.Send(request);
 
@@ -62,7 +64,7 @@ namespace Jungle.Api.Features.Category
 
                 return Results.Ok(result);
             })
-                .Produces<Result<Guid>>()
+                .Produces<Result>()
                 .WithTags("Category")
                 .IncludeInOpenApi();
         }

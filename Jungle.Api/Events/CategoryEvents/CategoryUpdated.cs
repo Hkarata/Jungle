@@ -1,7 +1,6 @@
-﻿
-namespace Jungle.Api.Events
+﻿namespace Jungle.Api.Events.CategoryEvents
 {
-    public class CategoryCreated : Event
+    public class CategoryUpdated : Event
     {
         public required Guid CategoryId { get; set; }
         public required string Name { get; set; }

@@ -1,5 +1,5 @@
-﻿using System.Text.Json.Serialization;
-using Jungle.Api.Events.CategoryEvents;
+﻿using Jungle.Api.Events.CategoryEvents;
+using System.Text.Json.Serialization;
 
 namespace Jungle.Api.Events
 {

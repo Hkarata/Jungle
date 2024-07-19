@@ -1,7 +1,6 @@
 ﻿using Carter;
 using Carter.OpenApi;
 using Jungle.Api.Data;
-using Jungle.Api.Events;
 using Jungle.Api.Events.CategoryEvents;
 using Jungle.Shared.Extensions;
 using Jungle.Shared.Requests;

@@ -1,7 +1,7 @@
 ﻿using Carter;
 using Carter.OpenApi;
+using Jungle.Api.Authentication;
 using Jungle.Api.Data;
-using Jungle.Api.Events;
 using Jungle.Api.Events.CategoryEvents;
 using Jungle.Shared.Extensions;
 using MediatR;
@@ -64,6 +64,11 @@ namespace Jungle.Api.Features.Category
 
                 return Results.Ok(result);
             })
+                .RequireAuthorization(policy =>
+                {
+                    policy.RequireClaim(IdentityConstants.AdminClaim, "true")
+                        .RequireAuthenticatedUser();
+                })
                 .Produces<Result>()
                 .WithTags("Category")
                 .IncludeInOpenApi();

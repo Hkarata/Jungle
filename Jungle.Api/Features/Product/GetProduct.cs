@@ -69,6 +69,9 @@ public class GetProductEndPoint : ICarterModule
             }
 
             return Results.Ok(result);
-        });
+        })
+            .WithTags("Product")
+            .Produces<Result<ProductDto>>()
+            .Produces<Error>(StatusCodes.Status400BadRequest);
     }
 }

@@ -10,8 +10,22 @@
 
 <PageTitle>Confirm email</PageTitle>
 
-<h1>Confirm email</h1>
-<StatusMessage Message="@statusMessage" />
+<div id="holder">
+    <h1 class="Rubik-Light">E-mail confirmation</h1>
+    <StatusMessage Message="@statusMessage" />
+</div>
+
+<style>
+    #holder {
+        margin-left: auto;
+        width: 43%;
+        margin-top: 100px;
+        margin-right: 15px;
+        padding: 15px 15px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
 
 @code {
     private string? statusMessage;

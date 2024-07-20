@@ -17,61 +17,62 @@
 
 <PageTitle>Register</PageTitle>
 
-<div id="Container">
+<div id="holder">
 
+    <span class="Rubik-Light" id="account">Create your account</span>
+    <span class="Rubik-Light" id="create">
+        Or
+        <NavLink href="/account/login" style="text-decoration: none">sign in to your existing account</NavLink>
+    </span>
 
-    <div id="left" class="fulvous-background">
-
-    </div>
-
-    <div id="right" class="licorice-background">
-
-    </div>
-
-
-    <div id="Card">
-        <img src="/Images/jungle-logo.svg" width="125" style="align-self:center;"/>
-        <div>
-            <StatusMessage Message="@Message" />
-            <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="RegisterUser" FormName="register">
-                <DataAnnotationsValidator />
-                <span class="Rubik-Regular" style="font-weight:600">Create a new account.</span>
-                <hr />
-                <ValidationSummary class="text-danger" role="alert" />
-                <div class="form-floating mb-3">
-                    <label for="email">Email</label>
-                    <InputText @bind-Value="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                    <ValidationMessage For="() => Input.Email" class="text-danger" />
-                </div>
-                <div class="form-floating mb-3">
-                    <label for="password">Password</label>
-                    <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                    <ValidationMessage For="() => Input.Password" class="text-danger" />
-                </div>
-                <div class="form-floating mb-3">
-                    <label for="confirm-password">Confirm Password</label>
-                    <InputText type="password" @bind-Value="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                    <ValidationMessage For="() => Input.ConfirmPassword" class="text-danger" />
-                </div>
-                <button type="submit">Register</button>
-            </EditForm>
+    <StatusMessage Message="@Message" />
+    <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="RegisterUser" FormName="register">
+        <DataAnnotationsValidator />
+        <ValidationSummary class="text-danger" role="alert" />
+        <div class="form-floating mb-3">
+            <label for="email">Email</label>
+            <InputText @bind-Value="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+            <ValidationMessage For="() => Input.Email" class="text-danger" />
         </div>
-    </div>
-
+        <div class="form-floating mb-3">
+            <label for="password">Password</label>
+            <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+            <ValidationMessage For="() => Input.Password" class="text-danger" />
+        </div>
+        <div class="form-floating mb-3">
+            <label for="confirm-password">Confirm Password</label>
+            <InputText type="password" @bind-Value="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+            <ValidationMessage For="() => Input.ConfirmPassword" class="text-danger" />
+        </div>
+        <button type="submit" class="Rubik-Light"> 
+            <FluentIcon Value="@(new Icons.Filled.Size20.PersonAdd())" Color="Color.Custom" CustomColor="#FFFFFF"/> 
+            Register
+        </button>
+    </EditForm>
 
 </div>
 
 <style>
     .form-control {
-        padding: 5px 10px;
-        font-family: 'Rubik-Light';
-        font-weight: 900;
-        border-radius: 5px;
-        font-size: 16px
+        padding: 10px;
+        font-size: 16px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2px solid;
+        font-family: Rubik-Light;
+        font-weight: 600;
+        outline:none;
+        border-color: forestgreen;
+    }
+
+    .text-danger {
+        color: red;
+        font-family: Rubik-Regular;
+        font-size: 14px;
+        font-weight: 600;
     }
 </style>
-
-
 
 @code {
     private IEnumerable<IdentityError>? identityErrors;

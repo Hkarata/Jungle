@@ -1,35 +1,149 @@
 ﻿@page "/"
+@layout NoLayout
 
-@inject IJSRuntime jsRuntime
+<div id="Container">
 
+    <video autoplay muted loop>
+        <source src="Videos/background.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
 
-<PageTitle>Home</PageTitle>
+    <div id="first" class="Rubik-Light">
+        <NavLink href="" class="nav">
+            <FluentIcon Value="@(new Icons.Filled.Size20.Home())" @onmouseover="HandleMouseOver" @onmouseout="HandleMouseOut" />
+            Home
+        </NavLink>
+        <NavLink href="discover" class="nav">
+            <FluentIcon Value="@(new Icons.Filled.Size20.New())" />
+            Discover
+        </NavLink>
+        <NavLink href="categories" class="nav">
+            <FluentIcon Value="@(new Icons.Filled.Size20.Group())" />
+            Categories
+        </NavLink>
+        <NavLink href="shop" class="nav">
+            <FluentIcon Value="@(new Icons.Filled.Size20.ShoppingBag())" />
+            Shop
+        </NavLink>
+    </div>
 
-<div id="First" class="licorice-background">
-    
-    <div id="left">
-        <span class="Rubik-Medium" style="color:white;font-size: 35px; font-weight: 600">
-            Get Up to 30% off
-        </span>
+    <div id="Second">
 
-        <span class="fulvous Rubik-Regular" style="font-size: 24px; font-weight: 600">
-            New Arrivals
-        </span>
+        <div id="Second-left">
 
-        <span class="Rubik-Regular" style="color:white;font-size:14px;font-weight:600;">
-            Introducing our latest collection of products.
-        </span>
+        </div>
 
-        <button id="placeOrder" class="Rubik-Light">
-            PLACE YOUR ORDER
-        </button>
+        <div id="Second-right">
+            
+            <span class="Rubik-Light elevate">
+                Elevate Your Style with Our Premium Collection.
+            </span>
+            <span class="l-grey Rubik-Regular">Discover the perfect blend of quality, craftsmanship,</span>
+            <span class="l-grey Rubik-Regular">and modern design in our carefully curated</span>
+            <span class="l-grey Rubik-Regular">ecommerce collection.</span>
+
+            <NavLink id="Shop" class="Rubik-Light" href="shop">
+                Shop now
+            </NavLink>
+
+        </div>
 
     </div>
 
-    <div id="right">
-        <img id="slideshow" src="/Images/shoes.png" />
+    <div id="Third">
+        <span class="Rubik-Regular" id="featured">Featured Products</span>
+        <span class="Rubik-Regular" style="text-align:center;font-size:16px;font-weight:600;">Discover our curated selection of the latest and greatest products in our ecommerce collection.</span>
+        
+        <FluentHorizontalScroll>
+
+            <FluentCard>
+
+            </FluentCard>
+
+        </FluentHorizontalScroll>
+
     </div>
 
+    <div id="Fourth">
+
+        <div id="Fourth-left">
+            
+            <span id="about" class="Rubik-Regular">About Jungle E-commerce</span>
+
+            <span class="explanation Rubik-Light">
+                At Acme Ecommerce, we are passionate about
+            </span>
+
+            <span class="explanation Rubik-Light">
+                providing our customers with the highest quality
+            </span>
+
+            <span class="explanation Rubik-Light">
+                products and exceptional shopping experiences. Our
+            </span>
+
+            <span class="explanation Rubik-Light">
+                mission is to curate a collection of timeless and stylish
+            </span>
+
+            <span class="explanation Rubik-Light">
+                pieces that empower you to express your unique
+            </span>
+
+            <span class="explanation Rubik-Light">
+                sense of fashion.
+            </span>
+
+        </div>
+
+        <div id="Fourth-right">
+
+        </div>
+
+    </div>
 </div>
 
-<script src="/js/image-slideshow.js"></script>
+@code {
+    private void HandleMouseOver(MouseEventArgs e)
+    {
+        Console.WriteLine("Mouse Over");
+    }
+
+    private void HandleMouseOut(MouseEventArgs e)
+    {
+        Console.WriteLine("Mouse Out");
+    }
+}
+
+<style>
+    .nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        gap: 10px;
+        font-weight: 600;
+    }
+
+    .nav:hover{
+        color: forestgreen;
+    }
+
+    #Shop{
+        background-color: blue;
+        width: max-content;
+        color: white;
+        padding: 10px 15px;
+        font-size: 16px;
+        text-decoration:none;
+        font-weight: 600;
+        border-radius: 5px;
+        margin-top: 10px;
+        transition: 0.3s ease-in-out;
+    }
+        #Shop:hover{
+            transform: scale(1.09);
+        }
+</style>

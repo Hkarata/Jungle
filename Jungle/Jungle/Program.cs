@@ -4,11 +4,14 @@ using Jungle.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.FluentUI.AspNetCore.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
+
+builder.Services.AddFluentUIComponents();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -40,7 +43,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
-builder.AddSeqEndpoint("seq");
+//builder.AddSeqEndpoint("seq");
 
 var app = builder.Build();
 

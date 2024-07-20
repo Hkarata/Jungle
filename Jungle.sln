@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.ServiceDefaults", "J
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.Api", "Jungle.Api\Jungle.Api.csproj", "{1E6ABBDE-580E-4E41-9B34-C94375952EBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jungle.Shared", "Jungle.Shared\Jungle.Shared.csproj", "{6DE4D203-0E23-4010-A36E-D09677CA8EDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jungle.Shared", "Jungle.Shared\Jungle.Shared.csproj", "{6DE4D203-0E23-4010-A36E-D09677CA8EDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

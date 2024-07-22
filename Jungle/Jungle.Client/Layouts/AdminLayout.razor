@@ -1,0 +1,97 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.FluentUI.AspNetCore.Components
+@implements IDisposable
+@inject NavigationManager NavigationManager
+<div id="Container">
+
+    <div id="top">
+
+        <div id="shapes">
+
+            <div id="first-shape">
+                
+                <NavLink href="/administration/dashboard" class="links" Match="NavLinkMatch.All">
+                    <FluentIcon Value="@(new Icons.Filled.Size20.Shortpick())" Color="Color.Custom" CustomColor="@GetIconColor("administration/dashboard")" />
+                    Dashboard
+                </NavLink>
+
+                <NavLink href="/administration/tenants" class="links">
+                    <FluentIcon Value="@(new Icons.Regular.Size20.FolderPeople())" Color="Color.Custom" CustomColor="@GetIconColor("administration/tenants")" />
+                    Tenants
+                </NavLink>
+            </div>
+
+            <div id="second-shape">
+                ss
+            </div>
+
+        </div>
+        <div id="circle">
+            circle
+        </div>
+
+    </div>
+
+    <main>
+        @Body
+    </main>
+
+</div>
+
+@code {
+    private string? currentUrl;
+
+    protected override void OnInitialized()
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+
+    private string GetIconColor(string href)
+    {
+        return currentUrl == href ? "#2d6ed1" : "grey";
+    }
+}
+
+
+<style>
+
+    .links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-family: Rubik-Light;
+        font-weight: 900;
+        font-size: 16px;
+        text-decoration:none;
+        height: fit-content;
+        padding: 5px 10px;
+        margin-left: 5px;
+        border-radius: 5px;
+        gap: 5px;
+        color: dimgray;
+        transition: 0.3s ease-in-out;
+    }
+        .links:hover{
+            background-color: transparent;
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+            color: red;
+        }
+
+    a.active{
+        color: #2d6ed1;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    }
+</style>

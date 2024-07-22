@@ -1,0 +1,32 @@
+﻿#Holder{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 100%;
+}
+
+#left{
+    background-color: white;
+    border-radius: 5px;
+    width: 20%;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+#allT{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    font-weight: 900;
+    background-color: transparent;
+    margin: 5px;
+    justify-content:center;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+}
+
+#right{
+
+}

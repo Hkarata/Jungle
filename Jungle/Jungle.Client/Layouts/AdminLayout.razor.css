@@ -1,0 +1,66 @@
+﻿#Container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f7f7f7;
+}
+
+#top {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    gap: 5px;
+}
+svg {
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+}
+
+#circle{
+    background-color: white;
+    height: 100%;
+    width: 110px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#shapes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+#first-shape {
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+}
+
+#second-shape {
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+main{
+    margin: 0 5px 5px 5px;
+    padding: 0;
+    flex-grow: 1;
+}

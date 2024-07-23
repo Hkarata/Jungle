@@ -1,0 +1,45 @@
+﻿@rendermode InteractiveAuto
+
+<div id="Bar">
+
+    <FluentBreadcrumb Style="font-family:Rubik-Light">
+        <FluentBreadcrumbItem Href="/administration/dashboard" Style="font-family:Rubik-Light;font-weight:600">
+            Administration
+        </FluentBreadcrumbItem>
+        <FluentBreadcrumbItem Href="/administration/tenants" Style="font-family:Rubik-Light;font-weight:600">
+            Tenants
+        </FluentBreadcrumbItem>
+        <FluentBreadcrumbItem Style="font-family:Rubik-Light;font-weight:600">Breadcrumb item 3</FluentBreadcrumbItem>
+    </FluentBreadcrumb>
+
+    <NavLink id="last" href="/administration/tenants/add-tenant" class="Rubik-Light">
+        <FluentIcon Value="@(new Icons.Filled.Size20.GuestAdd())" Color="Color.Custom" CustomColor="#FFFFFF" />
+        Add Tenant
+    </NavLink>
+    <FluentTooltip Anchor="last" HideTooltipOnCursorLeave="true" Position=TooltipPosition.Top Delay=200>I'm helping (quick)!</FluentTooltip>
+
+</div>
+
+
+<style>
+
+    #last {
+        margin-left: auto;
+        font-weight: 600;
+        background-color: cornflowerblue;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+        #last:hover{
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+            transform: scale(1.03);
+        }
+</style>

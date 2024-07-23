@@ -2,6 +2,7 @@
 @using Microsoft.FluentUI.AspNetCore.Components
 @implements IDisposable
 @inject NavigationManager NavigationManager
+<FluentTooltipProvider />
 <div id="Container">
 
     <div id="top">
@@ -22,7 +23,24 @@
             </div>
 
             <div id="second-shape">
-                ss
+                
+                @switch(currentUrl)
+                {
+                    case "administration/dashboard":
+                        <div id="circle">
+                            circle
+                        </div>
+                        break;
+                    case "administration/tenants":
+                        <Jungle.Client.Components.TenantBar />
+                        break;
+                    default:
+                        <div id="circle">
+                            circle
+                        </div>
+                        break;
+                }
+
             </div>
 
         </div>

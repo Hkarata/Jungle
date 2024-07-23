@@ -1,7 +1,121 @@
 ﻿@page "/administration/tenants/add-tenant"
+@layout Jungle.Client.Layouts.AdminLayout
+@rendermode InteractiveServer
 
-<h3>AddTenant</h3>
+@using System.ComponentModel.DataAnnotations
+
+@inject IToastService ToastService
+
+<PageTitle>Add tenant</PageTitle>
+
+<div id="Form">
+    <div id="first">
+        <span class="Rubik-Regular" style="font-size: 18px;font-weight:900">Add New Tenant</span>
+        <span style="font: 14px;color:grey">Fill out the details below to create a new tenant.</span>
+    </div>
+
+    <EditForm Model="Tenant" OnValidSubmit="Submit">
+        <DataAnnotationsValidator />
+
+        <div class="form-element">
+            <label>Tenant name</label>
+            <InputText @bind-Value="Tenant.Name"  class="input"/>
+            <ValidationMessage For="@(() => Tenant.Name)" class="text-danger"/>
+        </div>
+
+        <div class="form-element">
+            <label>Tenant phone</label>
+            <InputText @bind-Value="Tenant.Phone" class="input"/>
+            <ValidationMessage For="@(() => Tenant.Phone)" class="text-danger"/>
+        </div>
+
+        <div class="form-element">
+            <label>Tenant email</label>
+            <InputText @bind-Value="Tenant.Email" class="input"/>
+            <ValidationMessage For="@(() => Tenant.Email)" class="text-danger" />
+        </div>
+
+        <div class="form-element">
+            <label>Tenant address</label>
+            <InputText @bind-Value="Tenant.Address" class="input"/>
+            <ValidationMessage For="@(() => Tenant.Address)" class="text-danger" />
+        </div>
+
+        <button type="submit">Submit</button>
+
+    </EditForm>
+
+</div>
+
+<style>
+
+    .input{
+        outline: none;
+        border-top:none;
+        border-left:none;
+        border-right:none;
+        border-bottom: 1px solid green;
+        padding: 10px 10px;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: Rubik-Light;
+    }
+
+    .text-danger{
+        font-family: Rubik-Light;
+        font-weight: 900;
+        font-size: 14px;
+    }
+
+</style>
 
 @code {
 
+    [SupplyParameterFromForm]
+    private InputModel Tenant { get; set; } = new InputModel();
+
+    private ToastParameters<ProgressToastContent>? _progressToastDataIndeterminate;
+
+    private void Submit()
+    {
+        if (Tenant is null)
+        {
+            return;
+        }
+
+        _progressToastDataIndeterminate = new()
+            {
+                Id = $"Indeterminate",
+                Intent = ToastIntent.Progress,
+                Title = "Adding new tenant",
+                Content = new ProgressToastContent()
+                {
+                    Details = "Please wait while we adding the new tenant.",
+                },
+        };
+
+        ToastService.ShowProgressToast(_progressToastDataIndeterminate);
+    }
+
+    private sealed class InputModel
+    {
+        [Required(ErrorMessage = "Please provide the tenant's name")]
+        [Display(Name = "Tenant's name")]
+        public string Name { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Please provide the tenant's phone number")]
+        [Display(Name = "Tenant's phone number")]
+        [Phone]
+        [RegularExpression(@"^0\d{9}$", ErrorMessage = "Phone number must start with 0 and have exactly 10 digits.")]
+        public string Phone { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Please provide the tenant's email")]
+        [Display(Name = "Tenant's email")]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Please provide the tenant's address")]
+        [Display(Name = "Tenant's address")]
+        public string Address { get; set; } = string.Empty;
+    }
 }

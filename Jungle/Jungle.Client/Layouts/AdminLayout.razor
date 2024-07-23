@@ -34,6 +34,9 @@
                     case "administration/tenants":
                         <Jungle.Client.Components.TenantBar />
                         break;
+                    case "administration/tenants/add-tenant":
+                        <Jungle.Client.Components.TenantBar />
+                        break;
                     default:
                         <div id="circle">
                             circle
@@ -53,7 +56,7 @@
     <main>
         @Body
     </main>
-
+    <FluentToastProvider MaxToastCount="10" @rendermode="InteractiveAuto" />
 </div>
 
 @code {

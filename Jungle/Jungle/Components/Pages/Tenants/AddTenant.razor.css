@@ -1,2 +1,52 @@
-﻿body {
+﻿#Form {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    width: 600px;
+    padding: 15px;
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    flex-direction:column;
+    gap: 5px;
+}
+
+.form-element {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+label {
+    font-family: Rubik-Light;
+    font-weight: 600;
+}
+
+button {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-family: Rubik-Light;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    background-color: #2d6ed1;
+    color: white;
+}
+
+button:hover {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    transform: scale(1.02);
+}
+
+#first{
+    display: flex;
+    flex-direction:column;
+    font-family: Rubik-Light;
+    font-weight: 600;
 }

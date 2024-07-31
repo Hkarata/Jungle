@@ -1,0 +1,81 @@
+﻿@implements IDisposable
+@inject NavigationManager NavigationManager
+
+<div id="NavHolder">
+
+    <NavLink class="links Rubik-Regular" href="/tenancy/dashboard">
+        <FluentIcon Value="@(new Icons.Filled.Size20.ScanDash())" Color="Color.Custom" CustomColor="@GetIconColor("tenancy/dashboard")" />
+        Dashboard
+    </NavLink>
+
+    <NavLink class="links Rubik-Regular" href="/tenancy/inventory">
+        <FluentIcon Value="@(new Icons.Filled.Size20.Shortpick())" Color="Color.Custom" CustomColor="@GetIconColor("tenancy/inventory")"/>
+        Inventory
+    </NavLink>
+
+    <NavLink class="links Rubik-Regular" href="/tenancy/sales">
+        <FluentIcon Value="@(new Icons.Filled.Size20.Money())" Color="Color.Custom" CustomColor="@GetIconColor("tenancy/sales")" />
+        Sales
+    </NavLink>
+
+    <NavLink class="links Rubik-Regular" href="/tenancy/reports">
+        <FluentIcon Value="@(new Icons.Filled.Size20.DocumentCatchUp())" Color="Color.Custom" CustomColor="@GetIconColor("tenancy/reports")" />
+        Reports
+    </NavLink>
+
+</div>
+
+@code {
+    private string? currentUrl;
+
+    protected override void OnInitialized()
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+
+    private string GetIconColor(string href)
+    {
+        return currentUrl == href ? "#FFFFFF" : "grey";
+    }
+}
+
+<style>
+
+    .links {
+        background-color: transparent;
+        padding: 7px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        color: gray;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .links:hover {
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    }
+
+    a.active {
+        background-color: #2d6ed1;
+        color: white;
+    }
+
+</style>

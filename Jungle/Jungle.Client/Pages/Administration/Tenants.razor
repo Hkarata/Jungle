@@ -1,4 +1,6 @@
 ﻿@page "/administration/tenants"
+@rendermode InteractiveWebAssembly
+@attribute [StreamRendering(true)]
 @layout AdminLayout
 
 <PageTitle>Tenants</PageTitle>
@@ -7,21 +9,95 @@
 
     <div id="left">
         
-        <span id="allT" class="Rubik-Light">
-            <FluentIcon Value="@(new Icons.Filled.Size20.PeopleCommunity())" />
+        <NavLink id="allT" href="/administration/tenants" class="Rubik-Light">
+            <FluentIcon Value="@(new Icons.Filled.Size20.PeopleCommunity())" Color="Color.Custom" CustomColor="#FFFFFF"/>
             All Tenants
-        </span>
+        </NavLink>
 
-        <FluentSkeleton Shimmer="true"></FluentSkeleton>
+
 
     </div>
 
     <div id="right">
-        ss
+        
+        <span id="tens" class="fulvous Rubik-Regular">Tenants</span>
+
+        <FluentDataGrid Items="tenants" Pagination="@pagination" Style="overflow: auto;scrollbar-width: thin; margin-right: 10px;margin-left: 10px;">
+            <TemplateColumn Title="Tenant name" Style="font-weight:600;font-family:Rubik-Light;" Tooltip="true">
+                <ChildContent>
+                    <FluentDataGridCell Style="display: flex;flex-direction:column">
+                        <span class="Rubik-Light" style="font-weight: 600">@(context.Name)</span>
+                        <span class="Rubik-Regular" style="font-weight: 900;color:forestgreen">Active</span>
+                    </FluentDataGridCell>
+                </ChildContent>
+
+                <ColumnOptions>
+                    <div class="search-box" Style="font-weight:900;font-family:Rubik-Regular">
+                        <FluentSearch Autofocus=true Placeholder="Tenant name..." Style="width: 100%;font-weight:900;font-family:Rubik-Regular" Label="Filter" />
+                    </div>
+                </ColumnOptions>
+
+            </TemplateColumn>
+            <TemplateColumn Title="Contacts" Style="font-weight:600;font-family:Rubik-Light;">
+                <FluentDataGridCell Style="display: flex;flex-direction:column">
+                    <span class="Rubik-Light" style="font-weight: 600">@(context.Phone)</span>
+                    <span class="Rubik-Regular" style="font-weight: 900;color:#2d6ed1">@(context.Email)</span>
+                </FluentDataGridCell>
+            </TemplateColumn>
+            
+            <TemplateColumn Title="Address" Style="font-weight:600;font-family:Rubik-Light;">
+                <FluentDataGridCell Style="display: flex;flex-direction:column">
+                    <span class="Rubik-Light" style="font-weight: 900">@(context.Address)</span>
+                </FluentDataGridCell>
+            </TemplateColumn>
+
+            <TemplateColumn Title="Actions" Align="@Align.Start" Style="font-weight:600;font-family:Rubik-Light;">
+                <FluentButton aria-label="Edit item" IconEnd="@(new Icons.Regular.Size16.EyeTracking())" />
+                <FluentButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size16.Delete())" />
+            </TemplateColumn>
+        </FluentDataGrid>
+
+        <FluentPaginator State="pagination" Style="margin-top: auto;font-family: Rubik-Light;font-weight: 600;margin-right: 10px;margin-left: 10px;" />
+
     </div>
 </div>
 
+<style>
+    #allT {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        background-color: #2d6ed1;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    #allT.active {
+            background-color: #d78521;
+    }
+</style>
+
 
 @code {
+    PaginationState pagination = new PaginationState { ItemsPerPage = 6 };
+    private sealed record Tenant(string Name, string Phone, string Email, string Address);
+
+    private IQueryable<Tenant> tenants = new[]
+    {
+        new Tenant ( "John Doe",  "123-456-7890", "john.doe@example.com", "123 Main St" ),
+        new Tenant ( "Jane Smith", "987-654-3210", "jane.smith@example.com", "456 Elm St" ),
+        new Tenant ( "Bob Johnson", "555-123-4567", "bob.johnson@example.com", "789 Oak St" ),
+         new Tenant ( "Mary Doe",  "123-456-7890", "john.doe@example.com", "123 Main St" ),
+        new Tenant ( "Janeth Smith", "987-654-3210", "jane.smith@example.com", "456 Elm St" ),
+        new Tenant ( "Barbara Johnson", "555-123-4567", "bob.johnson@example.com", "789 Oak St" ),
+         new Tenant ( "Ray Doe",  "123-456-7890", "john.doe@example.com", "123 Main St" ),
+        new Tenant ( "James Smith", "987-654-3210", "jane.smith@example.com", "456 Elm St" ),
+        new Tenant ( "Daniel Johnson", "555-123-4567", "bob.johnson@example.com", "789 Oak St" )
+    }.AsQueryable();
 
 }

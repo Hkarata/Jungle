@@ -1,3 +1,166 @@
 ﻿#TheHolder{
-    
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+#first-div{
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+
+#FilterByCategory, #FilterByTenant {
+    padding: 8px 10px;
+    font-weight: 900;
+    background-color: #2d6ed1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+#FilterByCategory:hover, #FilterByTenant:hover {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+}
+
+#second-div{
+    margin: 10px 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.Card {
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.Card:hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+.Card-second {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.pholder{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    gap: 8px
+}
+
+.tsh {
+    font-family: 'Segoe Script';
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.price {
+    font-family: Rubik-Regular;
+    font-weight: 600;
+}
+
+.stock {
+    border: 1px solid gray;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-family: Rubik-Light;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sold {
+    font-weight: 600;
+    font-family: Rubik-Regular;
+    margin-top: 8px;
+    color: #2d6ed1;
+}
+
+::deep > fluent-badge {
+    --badge-fill-electronics: #ffd800;
+    --badge-fill-accessories: #2d6ed1;
+    --badge-fill-clothing: #1cc809;
+    --badge-color-clothing: #fff;
+    --badge-color-electronics: #000;
+    --badge-color-accessories: #fff;
+}
+
+#filterMenu {
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    top: 24%;
+    right: 2%;
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction:column;
+    gap: 5px;
+}
+
+#filterCat {
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    top: 24%;
+    right: 18%;
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filters {
+    color: gray;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border:none;
+}
+
+    .filters:hover {
+        background-color: #ffd800;
+        color: black;
+    }
+        
+#Search{
+
 }

@@ -7,8 +7,7 @@ var dynamoDb = builder.AddContainer("Jungle-DynamoDb", "amazon/dynamodb-local")
     .WithOtlpExporter();
 
 var seq = builder.AddSeq("seq")
-    .WithEnvironment("ACCEPT_EULA", "Y")
-    .ExcludeFromManifest();
+    .WithEnvironment("ACCEPT_EULA", "Y");
 
 var apiService = builder.AddProject<Projects.Jungle_Api>("Jungle-api")
     .WithReference(seq);

@@ -1,9 +1,162 @@
 ﻿@page "/inventory/products"
+@rendermode InteractiveWebAssembly
+@layout AdminLayout
+
+@inject IJSRuntime JsRuntime
 
 <PageTitle>Products</PageTitle>
 
-<h3>Products</h3>
+<div id="TheHolder">
+    
+    <div id="first-div">
+        <span class="Rubik-Regular" style="font-size: 20px;font-weight: 900">All Products</span>
+
+        <div id="Search">
+
+            <EditForm Model="Model">
+
+                <InputText @bind-Value="Model.Query" class="form-control" />
+
+                <InputSelect @bind-Value="Model.Directive" class="form-control">
+                    <option>
+
+                    </option>
+                    <option>
+                        product
+                    </option>
+                </InputSelect>
+
+            </EditForm>
+
+        </div>
+
+        <div style="display:flex;flex-direction:row;gap: 8px;align-items:center;">
+            <div @onclick="ShowCategoryFilter" id="FilterByCategory" class="Rubik-Light">
+                <FluentIcon Value="@(new Icons.Filled.Size20.Filter())" Color="Color.Custom" CustomColor="#FFFFFF" />
+                Filter by Category
+            </div>
+            <div @onclick="ShowTenantFilter" id="FilterByTenant" class="Rubik-Light">
+                <FluentIcon Value="@(new Icons.Filled.Size20.Filter())" Color="Color.Custom" CustomColor="#FFFFFF" />
+                Filter by Tenant
+            </div>
+        </div>
+
+        @if (isCategoryFilterVisible)
+        {
+            <div id="filterCat">
+                <span class="Rubik-Light" style="font-weight: 600;">Category</span>
+                <span class="Rubik-Light filters" style="font-weight: 600;">All</span>
+                <div style="border: 1px solid #d78521"></div>
+                <span class="Rubik-Light filters" style="font-weight: 600;">Example Category</span>
+            </div>
+        }
+
+        @if (isTenantFilterVisible)
+        {
+            <div id="filterMenu">
+                <span class="Rubik-Light" style="font-weight: 600;">Tenants</span>
+                <span class="Rubik-Light filters" style="font-weight: 600;">All</span>
+                <div style="border: 1px solid #d78521"></div>
+                <span class="Rubik-Light filters" style="font-weight: 600;">Nyagawa Mashati</span>
+            </div>
+        }
+
+    </div>
+    
+    <div id="second-div">
+        
+        @foreach (var i in Enumerable.Range(1, 20))
+        {
+            <div class="Card">
+                <FluentSkeleton Width="100%" Shimmer="true" Height="200px"/>
+                <span class="Rubik-Light" style="font-weight: 600;margin-top: 5px">Sunset Beach Towel</span>
+
+                <div class="categories">
+                    <FluentBadge Fill="electronics" Style="font-family:Rubik-Light;font-weight:600;">
+                        Electronics
+                    </FluentBadge>
+                    <FluentBadge Fill="accessories" Style="font-family:Rubik-Light;font-weight:600;">
+                        Accessories
+                    </FluentBadge>
+                    <FluentBadge Fill="clothing" Style="font-family:Rubik-Light;font-weight:900;">
+                        Clothing
+                    </FluentBadge>
+                </div>
+
+                <div class="Card-second">
+                    <div class="pholder">
+                        <span class="tsh rojo">Tsh</span>
+                        <span class="price">10,500</span>
+                    </div>
+                    <div class="stock">
+                        @i in Stock
+                    </div>
+                </div>
+
+                <span class="sold">Sold: @i</span>
+            </div>   
+        }
+        
+    </div>
+    
+</div>
 
 @code {
+    private bool isCategoryFilterVisible;
+    private bool isTenantFilterVisible;
 
+    private void ShowCategoryFilter()
+    {
+        isCategoryFilterVisible = !isCategoryFilterVisible;
+        if (isCategoryFilterVisible)
+        {
+            isTenantFilterVisible = false;
+        }
+    }
+
+    private void ShowTenantFilter()
+    {
+        isTenantFilterVisible = !isTenantFilterVisible;
+        if (isTenantFilterVisible)
+        {
+            isCategoryFilterVisible = false;
+        }
+    }
+
+    [SupplyParameterFromForm]
+    private SearchModel Model { get; set; } = new();
+
+    private sealed class SearchModel
+    {
+        public string Query { get; set; } = string.Empty;
+        public string Directive { get; set; } = string.Empty;
+    }
 }
+
+<style>
+
+    .form-control {
+        padding: 10px;
+        outline: none;
+        border-top:none;
+        border-left:none;
+        border-right:none;
+        outline-color: white;
+    }
+
+    .form-control:first-child{
+        width: 350px;
+        font-family: Rubik-Regular;
+        font-size: 16px;
+        font-weight: 600;
+        border-bottom: 1px solid forestgreen;
+    }
+
+    .form-control:nth-child(2n){
+        width: 200px;
+        font-family: Rubik-Regular;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+</style>

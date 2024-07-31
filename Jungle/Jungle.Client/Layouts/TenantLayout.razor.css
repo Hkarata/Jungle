@@ -1,0 +1,163 @@
+﻿#Container {
+    background-color: #f9f9f9;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: white;
+    margin: 5px;
+    height: 75px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#last {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+#last-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#last-right {
+    background-color: black;
+    width: 75px;
+    border-radius: 5px;
+}
+
+#content {
+    background-color: white;
+    flex-grow: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+#topBottom {
+    background-color: transparent;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#top {
+    background-color: rebeccapurple;
+    height: 50%;
+}
+
+#bottom {
+    background-color: white;
+    height: 50%;
+}
+
+#Mobile {
+    display: none;
+}
+
+#profile {
+    display: none;
+}
+
+@media(max-width: 768px) {
+    header {
+        display : none;
+    }
+
+    #Mobile {
+        display: flex;
+        background-color: white;
+        margin: 5px;
+        height: 50px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:center;
+    }
+
+    #profile {
+        display: flex;
+        background-color: red;
+        height: 45px;
+        width: 45px;
+        margin-right: 5px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.navHolder {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    width: 26px;
+}
+
+.topStick, .middleStick, .bottomStick {
+    background-color: black;
+    height: 2px;
+    width: 26px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.middleStick {
+    opacity: 1;
+}
+
+#menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 60px; /* Adjust as needed */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+    #menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        #menu ul li {
+            margin-bottom: 10px;
+        }
+
+            #menu ul li a {
+                text-decoration: none;
+                color: black;
+            }
+
+.navHolder.active .topStick {
+    transform: rotate(45deg) translate(6px, 5px);
+}
+
+.navHolder.active .middleStick {
+    opacity: 0;
+}
+
+.navHolder.active .bottomStick {
+    transform: rotate(-45deg) translate(6px, -5px);
+}
+
+.navHolder.active + #menu {
+    display: flex;
+}

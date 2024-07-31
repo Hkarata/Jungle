@@ -41,7 +41,10 @@
             <ValidationMessage For="@(() => Tenant.Address)" class="text-danger" />
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">
+            <FluentIcon Value="@(new Icons.Filled.Size20.PersonAdd())" Color="Color.Custom" CustomColor="#FFFFFF"/>
+            Submit
+        </button>
 
     </EditForm>
 

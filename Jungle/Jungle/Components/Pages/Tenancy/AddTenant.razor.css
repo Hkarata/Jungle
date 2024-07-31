@@ -37,6 +37,11 @@ button {
     transition: 0.3s ease-in-out;
     background-color: #2d6ed1;
     color: white;
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    gap: 10px;
 }
 
 button:hover {

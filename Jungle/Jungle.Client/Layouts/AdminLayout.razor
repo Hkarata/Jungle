@@ -20,6 +20,17 @@
                     <FluentIcon Value="@(new Icons.Regular.Size20.FolderPeople())" Color="Color.Custom" CustomColor="@GetIconColor("administration/tenants")" />
                     Tenants
                 </NavLink>
+                
+                <NavLink href="/inventory/products" class="links">
+                    <FluentEmoji Value="@(new Emojis.Objects.Flat.Default.ShoppingCart())" Width="16px"/>
+                    Products
+                </NavLink>
+
+                <NavLink href="/sales" class="links">
+                    <FluentEmoji Value="@(new Emojis.Objects.Flat.Default.MoneyBag())" Width="16px" />
+                    Sales
+                </NavLink>
+                
             </div>
 
             <div id="second-shape">
@@ -36,6 +47,9 @@
                         break;
                     case "administration/tenants/add-tenant":
                         <Jungle.Client.Components.TenantBar />
+                        break;
+                    case "inventory/products":
+                        <Jungle.Client.Components.ProductBar/>
                         break;
                     default:
                         <div id="circle">

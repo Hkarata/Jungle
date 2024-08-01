@@ -11,3 +11,10 @@
     background-color: red;
     padding: 5px 10px;
 }
+
+@media(max-width: 768px){
+    #NavHolder {
+        flex-direction: column;
+        align-items: start;
+    }
+}

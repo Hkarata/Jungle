@@ -50,12 +50,7 @@
             <div class="bottomStick"></div>
         </div>
         <div id="menu">
-            <!-- Menu content here -->
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+            <Jungle.Client.Components.Menu.TenantNavMenu />
         </div>
 
 
@@ -90,12 +85,10 @@
         const div2 = document.getElementById('menu');
 
         const div1Width = window.getComputedStyle(div1, null).getPropertyValue("width");
-        console.log(div1Width);
+
         div2.style.width = (parseFloat(div1Width) - 20) + 'px';
     }
 
-    // Initial call to set the width on page load
-    //matchDivWidths();
     // Add an event listener to update the width on window resize
     window.addEventListener('resize', matchDivWidths);
 

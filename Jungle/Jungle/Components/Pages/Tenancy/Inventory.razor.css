@@ -1,0 +1,131 @@
+﻿#FirstDiv {
+    margin: 10px 10px;
+}
+
+#SecondDiv {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 30px 10px;
+    gap: 15px;
+}
+
+.bordered {
+    border: 1px solid;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 2px;
+}
+
+#ThirdDiv{
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#UpdateStock {
+    background-color: #2d6ed1;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+    #UpdateStock button {
+        width: max-content;
+        padding: 5px 20px;
+        font-weight: 600;
+        font-size: 18px;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items:center;
+        gap: 8px;
+    }
+
+#ProductTable {
+    height: 500px;
+}
+
+#Actions {
+    align-self: start;
+}
+
+@media(min-width: 768px) {
+    #TableHeader {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+        border-bottom: 2px solid yellow;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        padding-left: 15px;
+        font-family: Rubik-Regular;
+        font-weight: 600;
+        background-color: #fdfdfd;
+    }
+
+    #TableBody {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+        overflow-y: auto;
+        height: 400px;
+        scrollbar-width: none;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        padding-left: 15px;
+        grid-row-gap: 15px;
+    }
+}
+
+@media(max-width: 768px) {
+
+    #ProductTable {
+        overflow-x: auto;
+    }
+
+    #TableBody, #TableHeader {
+        display: grid;
+        grid-template-columns: 250px 100px 100px 100px 120px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        padding-left: 15px;
+    }
+
+    #TableHeader {
+        position: sticky;
+        top: 0; /* Fix the item at the top when scrolling */
+        background: yellow; /* Optional: Add background color for visibility */
+        z-index: 10;
+        width: 800px;
+        font-family: Rubik-Regular;
+        font-weight: 600;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    }
+
+    #TableBody {
+        grid-row-gap: 15px;
+    }
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-self: start;
+}
+
+::deep > fluent-badge {
+    --badge-fill-electronics: #ffd800;
+    --badge-fill-accessories: #2d6ed1;
+    --badge-fill-clothing: #1cc809;
+    --badge-color-clothing: #fff;
+    --badge-color-electronics: #000;
+    --badge-color-accessories: #fff;
+}

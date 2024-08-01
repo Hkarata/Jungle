@@ -16,6 +16,7 @@ header {
     display: flex;
     flex-direction: row;
     gap: 5px;
+    min-height: 75px;
 }
 
 #last {
@@ -45,6 +46,9 @@ header {
     margin-bottom: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width:none;
 }
 
 #topBottom {
@@ -80,25 +84,28 @@ header {
 
     #Mobile {
         display: flex;
-        background-color: white;
+        background-color: #2d6ed1;
         margin: 5px;
         height: 50px;
         border-radius: 5px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
         flex-direction: row;
         justify-content: space-between;
-        align-items:center;
+        align-items: center;
     }
 
     #profile {
         display: flex;
-        background-color: red;
-        height: 45px;
-        width: 45px;
+        background-color: white;
+        height: 43px;
+        width: 43px;
         margin-right: 5px;
         border-radius: 50%;
         justify-content: center;
         align-items: center;
+        border: none;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+        cursor: pointer;
     }
 }
 
@@ -111,7 +118,7 @@ header {
 }
 
 .topStick, .middleStick, .bottomStick {
-    background-color: black;
+    background-color: white;
     height: 2px;
     width: 26px;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -129,6 +136,8 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
     border-radius: 4px;
+    overflow: hidden;
+    z-index: 9999;
 }
 
     #menu ul {

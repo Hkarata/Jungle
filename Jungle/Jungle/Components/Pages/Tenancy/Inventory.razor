@@ -1,8 +1,131 @@
 ﻿@page "/tenancy/inventory"
 @layout Jungle.Client.Layouts.TenantLayout
 
-<h3>Inventory</h3>
+<PageTitle>Inventory</PageTitle>
+
+<div id="FirstDiv">
+
+    <div style="display:flex;flex-direction:column;gap: 3px;">
+        <span class="Rubik-Regular" style="font-size: 24px;font-weight: 600;">Inventory Dashboard</span>
+        <span class="Rubik-Regular" style="font-weight: 900;color: #2d6ed1">Monitor and manage your product inventory.</span>
+    </div>
+
+</div>
+
+<div id="SecondDiv">
+
+    <div class="bordered">
+        <span>Total Products</span>
+        <span>5</span>
+    </div>
+    <div class="bordered">
+        <span>Total Stock</span>
+        <span>310</span>
+    </div>
+    <div class="bordered">
+        <span>Low Stock</span>
+        <span>0</span>
+    </div>
+
+</div>
+
+<div id="ThirdDiv">
+
+    <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;">
+        <span class="Rubik-Regular" style="font-size: 24px;font-weight:600;">Product Inventory</span>
+        <NavLink href="/cciece" class="link Rubik-Light">Add Product</NavLink>
+    </div>
+
+    <div id="UpdateStock">
+        <span class="Rubik-Regular" style="font-weight: 900;color: white;font-size: 20px">Update Stock for Acme Widgets</span>
+        <br/>
+        <label class="Rubik-Light" style="font-weight: 600; color: white;">Current stock:</label>
+        <input type="number" min="1" class="myInput"/>
+
+        <div style="margin-top: 8px;display: flex;flex-direction:row;gap: 8px;margin-bottom: 9px;">
+            <button class="Rubik-Regular">
+                <FluentIcon Value="@(new Icons.Filled.Size20.AppsAddIn())" />
+                Update
+            </button>
+            <button class="Rubik-Regular">
+                <FluentIcon Value="@(new Icons.Filled.Size20.ShareCloseTray())" />
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <div id="ProductTable">
+        
+        <div id="TableHeader">
+            <span>Product (s)</span>
+            <span>Category (s)</span>
+            <span>Price (Tsh)</span>
+            <span>Stock</span>
+            <span>Actions</span>
+        </div>
+
+        <div id="TableBody">
+
+            @foreach (var i in Enumerable.Range(1, 50))
+            {
+                <div style="display:flex;flex-direction:column;">
+                    <span class="Rubik-Regular" style="font-weight:600;">Acme Widgets</span>
+                    <span class="Rubik-Regular fulvous" style="font-weight: 900;font-size: 14px">High-quality widgets for all your needs</span>
+                </div>
+                <div class="categories">
+                    <FluentBadge Fill="electronics" Style="font-family:Rubik-Light;font-weight:600;">
+                        Electronics
+                    </FluentBadge>
+                    <FluentBadge Fill="accessories" Style="font-family:Rubik-Light;font-weight:600;">
+                        Accessories
+                    </FluentBadge>
+                    <FluentBadge Fill="clothing" Style="font-family:Rubik-Light;font-weight:900;">
+                        Clothing
+                    </FluentBadge>
+                </div>
+                <span class="Rubik-Regular" style="align-self: start;font-weight:900;font-size: 18px;">9999</span>
+                <span class="Rubik-Regular" style="align-self: start;font-weight:900;font-size: 18px;">20</span>
+                <div id="Actions">
+                    <button class="Rubik-Regular">
+                        <FluentIcon Value="@(new Icons.Filled.Size20.AppsAddIn())" />
+                        Update
+                    </button>
+                    <button class="Rubik-Regular">
+                        <FluentIcon Value="@(new Icons.Filled.Size20.ShareCloseTray())" />
+                        Cancel
+                    </button>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
 
 @code {
 
 }
+
+<style>
+
+    .myInput {
+        padding: 5px;
+        font-size: 18px;
+        outline: none;
+        font-family: Rubik-Regular;
+        font-weight: 600;
+    }
+
+    .link {
+        background-color: rebeccapurple;
+        padding: 8px 20px;
+        font-weight: 600;
+        border-radius: 5px;
+        text-decoration:none;
+        color: white;
+    }
+
+</style>
